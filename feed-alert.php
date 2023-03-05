@@ -10,3 +10,14 @@ foreach ( $rss_items as $item ) :
 		
 endforeach;
 endif; ?>
+
+// Output of feed items into Alert div
+<ul>
+<?php if ($maxitems == 1 && (strtolower ( $rss_title ) == 'clear' )) echo ' ';
+else
+foreach ( $rss_items as $item ) : ?>
+<div class="rave-alert" aria-label="Active RAVE Alert">
+<li><strong><a href="<?php echo $item->get_permalink(); ?>"><?php echo $item->get_title(); ?></a></strong> - <?php echo $item->get_description() ?></li>
+</div>
+<?php endforeach; ?>
+</ul>
